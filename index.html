@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Celebrate Us 💍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef3 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .floating-heart {
+            position: fixed;
+            font-size: 25px;
+            opacity: 0.4;
+            pointer-events: none;
+            animation: floatHeart 6s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes floatHeart {
+            0%, 100% { 
+                transform: translateY(0) translateX(0) rotate(0deg); 
+                opacity: 0.4;
+            }
+            25% { 
+                transform: translateY(-30px) translateX(10px) rotate(5deg); 
+                opacity: 0.6;
+            }
+            50% { 
+                transform: translateY(-15px) translateX(-10px) rotate(-5deg); 
+                opacity: 0.5;
+            }
+            75% { 
+                transform: translateY(-25px) translateX(5px) rotate(3deg); 
+                opacity: 0.6;
+            }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-top: 40px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+
+        .intro-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin: 30px 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .intro-section p {
+            font-size: 1.15em;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #34495e;
+            margin: 50px 0 30px 0;
+            text-align: center;
+            font-weight: 300;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .photo-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .photo-wrapper {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(135deg, #e8eef3 0%, #d4dce5 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 1em;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .photo-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-caption {
+            padding: 20px;
+            color: #555;
+            font-size: 1em;
+            text-align: center;
+            background: white;
+        }
+
+        .date-proposal {
+            background: linear-gradient(135deg, #5f72bd 0%, #9b59b6 100%);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 50px 0;
+            box-shadow: 0 4px 20px rgba(95, 114, 189, 0.3);
+        }
+
+        .date-proposal h2 {
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .date-proposal p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        .date-details {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px auto;
+            max-width: 600px;
+            backdrop-filter: blur(10px);
+        }
+
+        .date-details p {
+            margin: 10px 0;
+            font-size: 1.1em;
+        }
+
+        .btn-container {
+            margin-top: 35px;
+        }
+
+        .btn-yes {
+            background: white;
+            color: #5f72bd;
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.2em;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-yes:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+
+        .closing {
+            text-align: center;
+            margin: 60px 0 40px 0;
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+            .intro-section {
+                padding: 30px 25px;
+            }
+            .date-proposal {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts -->
+    <div class="floating-heart" style="top: 8%; left: 5%; animation-delay: 0s;">💕</div>
+    <div class="floating-heart" style="top: 15%; right: 8%; animation-delay: 1s;">💖</div>
+    <div class="floating-heart" style="top: 25%; left: 12%; animation-delay: 2s;">💗</div>
+    <div class="floating-heart" style="top: 35%; right: 15%; animation-delay: 0.5s;">💝</div>
+    <div class="floating-heart" style="top: 45%; left: 8%; animation-delay: 1.5s;">💘</div>
+    <div class="floating-heart" style="top: 55%; right: 10%; animation-delay: 2.5s;">💞</div>
+    <div class="floating-heart" style="top: 65%; left: 15%; animation-delay: 3s;">💓</div>
+    <div class="floating-heart" style="top: 75%; right: 12%; animation-delay: 0.8s;">💕</div>
+    <div class="floating-heart" style="top: 85%; left: 10%; animation-delay: 1.8s;">💖</div>
+    <div class="floating-heart" style="top: 18%; left: 85%; animation-delay: 2.2s;">💗</div>
+    <div class="floating-heart" style="top: 28%; right: 85%; animation-delay: 1.2s;">💝</div>
+    <div class="floating-heart" style="top: 42%; left: 90%; animation-delay: 2.8s;">💘</div>
+    <div class="floating-heart" style="top: 58%; right: 88%; animation-delay: 0.3s;">💞</div>
+    <div class="floating-heart" style="top: 70%; left: 88%; animation-delay: 1.7s;">💓</div>
+    <div class="floating-heart" style="top: 82%; right: 90%; animation-delay: 2.3s;">💕</div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Our First Date as Fiancés 💍</h1>
+            <p class="subtitle">Let's celebrate this new chapter together</p>
+        </div>
+
+        <div class="intro-section">
+            <p>
+                Hey beautiful! So we're engaged now, which honestly still feels like the best dream I never want to wake up from. 
+                I've been thinking about how lucky I am to have you say yes, and I realized we haven't actually gone on our first 
+                official date as fiancés yet.
+            </p>
+            <p>
+                I know we've been together for a while now, but this feels different. You're going to be my wife, and that thought 
+                makes my heart race every single time. I want to take you out, celebrate us, and show you how excited I am about 
+                our forever together.
+            </p>
+        </div>
+
+        <h2 class="section-title">Moments That Made Me Fall for You (Over and Over)</h2>
+
+        <div class="photo-grid">
+            <div class="photo-card">
+                <div class="photo-wrapper">
+                    <img src="photo1.jpg" alt="Our Memory">
+                </div>
+                <div class="photo-caption">
+                    Remember this day?
+                </div>
+            </div>
+            <div class="photo-card">
+                <div class="photo-wrapper">
+                    <img src="photo2.jpg" alt="Our Memory">
+                </div>
+                <div class="photo-caption">
+                    In our element!!
+                </div>
+            </div>
+            <div class="photo-card">
+                <div class="photo-wrapper">
+                    <img src="C:\Users\HP\Downloads\Date Ask Out\photo3.jpeg" alt="Our Memory">
+                </div>
+                <div class="photo-caption">
+                    With my lifetime bakar
+                </div>
+            </div>
+            <div class="photo-card">
+                <div class="photo-wrapper">
+                    <img src="C:\Users\HP\Downloads\Date Ask Out\photo4.jpeg" alt="Our Memory">
+                </div>
+                <div class="photo-caption">
+                    My hottie💖
+                </div>
+            </div>
+            <div class="photo-card">
+                <div class="photo-wrapper">
+                    <img src="C:\Users\HP\Downloads\Date Ask Out\photo5.jpeg" alt="Our Memory">
+                </div>
+                <div class="photo-caption">
+                    Majhi godu
+                </div>
+            </div>
+            <div class="photo-card">
+                <div class="photo-wrapper">
+                    <img src="C:\Users\HP\Downloads\Date Ask Out\photo6.jpeg" alt="Our Memory">
+                </div>
+                <div class="photo-caption">
+                    Us khikhi through life
+                </div>
+            </div>
+        </div>
+
+        <div class="date-proposal">
+            <h2>So here's what I'm thinking...</h2>
+            <p>
+                Let's go on a proper date. Just the two of us, celebrating the fact that you're mine and I'm yours. 
+                No distractions, no stress - JUST YOU AND I
+            </p>
+            
+            <div class="date-details">
+                <p><strong>When:</strong> 4th February, 8PM Onwards</p>
+                <p><strong>Where:</strong> It's a surprise (but I picked it with you in mind)</p>
+                <p><strong>Dress code:</strong> Whatever makes you feel beautiful (you always do)</p>
+            </div>
+
+            <p>
+                I promise good food, great conversation, lots of laughter, and a night focused entirely on celebrating 
+                us and this incredible journey we're on together. I can't wait to see your smile across the table 
+                and know that you're going to be my wife.
+            </p>
+
+            <div class="btn-container">
+                <button class="btn-yes" onclick="acceptDate()">Yes! Can't wait! 💕</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function acceptDate() {
+            alert("Yay! I'm so excited! This is going to be perfect because I get to spend it with you. Can't wait to make more memories together. 💕✨");
+        }
+    </script>
+</body>
+</html>
